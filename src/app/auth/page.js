@@ -86,7 +86,7 @@ const AuthPage = () => {
           >
             <Image
               src={images[currentSlide].src}
-              alt="Legal background"
+              alt="Bikes Hub"
               objectFit="cover"
               w="100%"
               h="100vh"
@@ -119,7 +119,7 @@ const AuthPage = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 1.5 }}
               >
-                <Text color={"red.600"}>
+                <Text color={"teal"}>
 
                 {images[currentSlide].heading}
                 </Text>
@@ -197,7 +197,7 @@ const AuthPage = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 1.5 }}
               >
-                <Text color={"red.600"}>
+                <Text color={"teal"}>
 
                 {images[currentSlide].heading}
                 </Text>

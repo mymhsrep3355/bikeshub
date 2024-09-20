@@ -74,7 +74,7 @@ export const ResetPasswordModal = ({ isOpen, onClose, email, otp }) => {
               placeholder="Enter new password"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              focusBorderColor="red.500"
+              focusBorderColor="teal.500"
             />
           </FormControl>
 
@@ -85,13 +85,13 @@ export const ResetPasswordModal = ({ isOpen, onClose, email, otp }) => {
               placeholder="Confirm new password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              focusBorderColor="red.500"
+              focusBorderColor="teal.500"
             />
           </FormControl>
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme="red" mr={3} onClick={handleSubmit} size="lg">
+          <Button colorScheme="teal.600" mr={3} onClick={handleSubmit} size="lg">
             Reset Password
           </Button>
           <Button variant="ghost" onClick={onClose} size="lg">

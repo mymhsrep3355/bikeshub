@@ -66,7 +66,7 @@ try {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader textAlign="center" color="red.600">Enter OTP</ModalHeader>
+          <ModalHeader textAlign="center" color="teal.600">Enter OTP</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <FormControl>
@@ -84,8 +84,8 @@ try {
                     fontSize="2xl"
                     width="50px"
                     height="50px"
-                    borderColor="red.500"
-                    focusBorderColor="red.600"
+                    borderColor="teal.600"
+                    focusBorderColor="teal.600"
                     value={digit}
                     onChange={(e) => handleChange(e.target, index)}
                     onKeyDown={(e) => {
@@ -100,7 +100,7 @@ try {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="red" mr={3} onClick={handleSubmit} size="lg">
+            <Button colorScheme="teal" mr={3} onClick={handleSubmit} size="lg">
               Verify OTP
             </Button>
             <Button variant="ghost" onClick={onClose} size="lg">

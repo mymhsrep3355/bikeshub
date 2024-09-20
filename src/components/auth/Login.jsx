@@ -93,7 +93,7 @@ const Login = ({ setIsLoginPage }) => {
         boxShadow="lg"
         bg="white"
       >
-        <Heading as="h2" size="xl" mb={6} textAlign="center" color="red.600">
+        <Heading as="h2" size="xl" mb={6} textAlign="center" color="teal">
           Login
         </Heading>
         <form onSubmit={handleSubmit}>
@@ -102,12 +102,12 @@ const Login = ({ setIsLoginPage }) => {
               <FormLabel>Email address</FormLabel>
               <InputGroup>
                 <InputLeftElement pointerEvents="none">
-                  <Icon as={MdEmail} color="red.500" />
+                  <Icon as={MdEmail} color="teal" />
                 </InputLeftElement>
                 <Input
                   type="email"
                   placeholder="Enter your email"
-                  focusBorderColor="red.500"
+                  focusBorderColor="teal"
                   value={formData.email}
                   onChange={handleChange}
                 />
@@ -117,7 +117,7 @@ const Login = ({ setIsLoginPage }) => {
               <FormLabel>Password</FormLabel>
               <InputGroup>
                 <InputLeftElement pointerEvents="none">
-                  <Icon as={FaLock} color="red.500" />
+                  <Icon as={FaLock} color="teal" />
                 </InputLeftElement>
                 <Input
                   type="password"
@@ -146,7 +146,7 @@ const Login = ({ setIsLoginPage }) => {
             <Button
               mt={4}
               colorScheme="red"
-              bg="red.600"
+              bg="teal"
               color="white"
               _hover={{ bg: "red.700" }}
               size="lg"
@@ -157,7 +157,7 @@ const Login = ({ setIsLoginPage }) => {
             </Button>
             <Stack direction={{ base: "column", sm: "row" }} align="center">
               <Text color="gray.600">Don&#39;t have an account?</Text>
-              <Link color="red.500" onClick={() => setIsLoginPage(false)}>
+              <Link color="teal" onClick={() => setIsLoginPage(false)}>
                 Sign up
               </Link>
             </Stack>

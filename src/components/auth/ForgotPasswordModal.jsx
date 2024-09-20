@@ -57,7 +57,7 @@ export const ForgotPasswordModal = () => {
 
   return (
     <>
-      <Text color="red.500" cursor="pointer" onClick={onOpen}>
+      <Text color="teal.600" cursor="pointer" onClick={onOpen}>
         Forgot password?
       </Text>
 
@@ -79,7 +79,7 @@ export const ForgotPasswordModal = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="red" mr={3} onClick={handleEmailSubmit}>
+            <Button colorScheme="teal" mr={3} onClick={handleEmailSubmit}>
               Send OTP
             </Button>
             <Button variant="ghost" onClick={onClose}>
