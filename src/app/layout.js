@@ -7,6 +7,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { AuthContext } from "@/service/AuthProvider";
 import { AuthProvider } from "@/service/AuthProvider";
 import { AdsProvider } from "@/service/AdsProvider";
+import { ApiProvider } from "@/service/ApiContext";
+import { ChatProvider } from "@/service/ChatContext";
 
 const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
@@ -21,7 +23,11 @@ export default function RootLayout({ children }) {
         <ChakraProviders>
           <AuthProvider>
             <AdsProvider>
-              <NavigationProvider>{children}</NavigationProvider>
+              <ApiProvider>
+                <ChatProvider>
+                  <NavigationProvider>{children}</NavigationProvider>
+                </ChatProvider>
+              </ApiProvider>
             </AdsProvider>
           </AuthProvider>
         </ChakraProviders>

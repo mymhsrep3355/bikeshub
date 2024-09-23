@@ -12,12 +12,14 @@ export const AdsProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchAds = async () => {
-      const response = await axios.get(`${BASE_URL}/api/ads`);
-      setAds(response.data);
+      const response = await axios.get(`${BASE_URL}/api/ads/featured`);
+      setAds(response.data.ads);
     };
 
     fetchAds();
   }, []);
+  
+  
 
   return (
     <AdsContext.Provider value={{ ads, setAds }}>
