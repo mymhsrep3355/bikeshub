@@ -42,7 +42,6 @@ export const ApiProvider = ({ children }) => {
     }
   };
 
-  // Post an ad
   const postAd = async (data) => {
     try {
       const formData = new FormData();
