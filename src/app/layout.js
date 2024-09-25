@@ -9,6 +9,7 @@ import { AuthProvider } from "@/service/AuthProvider";
 import { AdsProvider } from "@/service/AdsProvider";
 import { ApiProvider } from "@/service/ApiContext";
 import { ChatProvider } from "@/service/ChatContext";
+import { StoresProvider } from "@/service/StoresProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
@@ -25,7 +26,9 @@ export default function RootLayout({ children }) {
             <AdsProvider>
               <ApiProvider>
                 <ChatProvider>
-                  <NavigationProvider>{children}</NavigationProvider>
+                  <StoresProvider>
+                    <NavigationProvider>{children}</NavigationProvider>
+                  </StoresProvider>
                 </ChatProvider>
               </ApiProvider>
             </AdsProvider>

@@ -20,10 +20,15 @@ import {
   Link,
   IconButton,
   Spinner,
+  VStack,
+  Grid,
+  GridItem,
+  Badge,
+  HStack,
 } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { ApiContext } from "@/service/ApiContext";
-import { ChatContext } from "@/service/ChatContext"; // Import ChatContext for managing chat state
+import { ChatContext } from "@/service/ChatContext";
 import dynamic from "next/dynamic";
 import ChatBox from "@/components/Custom/ChatBox";
 
@@ -46,6 +51,8 @@ const NextArrow = ({ onClick }) => (
     colorScheme="teal"
     bg="teal.500"
     _hover={{ bg: "teal.600" }}
+    borderRadius="full"
+    boxShadow="lg"
   />
 );
 
@@ -63,11 +70,13 @@ const PrevArrow = ({ onClick }) => (
     colorScheme="teal"
     bg="teal.500"
     _hover={{ bg: "teal.600" }}
+    borderRadius="full"
+    boxShadow="lg"
   />
 );
 
 const Seller = () => {
-  const { ads, featuredProducts, spareParts, loading, error } = useContext(AdsContext); // Assuming loading and error states
+  const { ads, featuredProducts, spareParts, loading, error } = useContext(AdsContext);
   const { createStore, postAd } = useContext(ApiContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { chat, setChat, isChatOpen, setIsChatOpen } = useContext(ChatContext);
@@ -88,6 +97,14 @@ const Seller = () => {
   }, [error]);
 
   const createStoreFields = [
+    {
+      name: "images",
+      label: "Store Images",
+      type: "file",
+      accept: "image/*",
+      multiple: true,
+      isRequired: true,
+    },
     {
       name: "name",
       label: "Store Name",
@@ -241,14 +258,12 @@ const Seller = () => {
   return (
     <>
       <Navbar userType="seller" />
-      <Container maxW="7xl" w={"full"} py={4}>
-        <Flex justify="space-between" align="center" mb={4}>
+      <Container maxW="9xl" w="full" py={6}>
+      
+        <Flex justify="space-between" align="center" mb={8}>
           <Box flex="1" mr={4}>
-            <SearchBar />
+            <SearchBar placeholder="Search ads, stores, and more..." />
           </Box>
-        </Flex>
-
-        <Flex flexDir={"row"} justify={"center"} gap={3} mb={4}>
           <CreateButton
             buttonText="Create Store"
             icon={FaStore}
@@ -256,27 +271,19 @@ const Seller = () => {
               setModalType("createStore");
               onOpen();
             }}
-          />
-          <CreateButton
-            buttonText="Post Ad"
-            icon={FaAdversal}
-            onClick={() => {
-              setModalType("postAd");
-              onOpen();
-            }}
+            colorScheme="teal"
+            size="md"
           />
         </Flex>
 
-        <Divider my={4} />
-
         {/* Featured Ads Section */}
-        <Box mb={8}>
-          <Flex justifyContent="space-between" alignItems="center">
-            <Heading size="lg" mb={4} color="teal.600">
+        <Box mb={12} p={6} bg="white" borderRadius="lg" boxShadow="lg">
+          <Flex justifyContent="space-between" alignItems="center" mb={4}>
+            <Heading size="lg" color="teal.600">
               Featured Ads
             </Heading>
             <Link
-              color="gray.500"
+              color="teal.500"
               fontWeight="bold"
               onClick={() => router.push("/ads")}
               fontSize="md"
@@ -309,13 +316,13 @@ const Seller = () => {
         </Box>
 
         {/* Featured Vehicles Section */}
-        <Box mb={8}>
-          <Flex justifyContent="space-between" alignItems="center">
-            <Heading size="lg" mb={4} color="teal.600">
+        <Box mb={12} p={6} bg="white" borderRadius="lg" boxShadow="lg">
+          <Flex justifyContent="space-between" alignItems="center" mb={4}>
+            <Heading size="lg" color="teal.600">
               Featured Vehicles in Stores
             </Heading>
             <Link
-              color="gray.500"
+              color="teal.500"
               fontWeight="bold"
               onClick={() => router.push("/stores")}
               fontSize="md"
@@ -333,7 +340,7 @@ const Seller = () => {
               <Slider {...sliderSettings}>
                 {featuredProducts.map((item) => (
                   <Box key={item._id} px={2}>
-                    <ItemCard item={item} />
+                    <ItemCard item={item} user={false} />
                   </Box>
                 ))}
               </Slider>
@@ -348,13 +355,13 @@ const Seller = () => {
         </Box>
 
         {/* Featured Spare Parts Section */}
-        <Box mb={8}>
-          <Flex justifyContent="space-between" alignItems="center">
-            <Heading size="lg" mb={4} color="teal.600">
-              Featured Products in Stores
+        <Box mb={12} p={6} bg="white" borderRadius="lg" boxShadow="lg">
+          <Flex justifyContent="space-between" alignItems="center" mb={4}>
+            <Heading size="lg" color="teal.600">
+              Featured Spare Parts
             </Heading>
             <Link
-              color="gray.500"
+              color="teal.500"
               fontWeight="bold"
               onClick={() => router.push("/stores")}
               fontSize="md"
@@ -386,12 +393,11 @@ const Seller = () => {
           </Box>
         </Box>
 
+        {/* Create Modal */}
         <ModalForm
           isOpen={isOpen}
           onClose={onClose}
-          formFields={
-            modalType === "createStore" ? createStoreFields : postAdFields
-          }
+          formFields={modalType === "createStore" ? createStoreFields : postAdFields}
           formTitle={modalType === "createStore" ? "Create Store" : "Post Ad"}
           onSubmit={handleSubmit}
         />

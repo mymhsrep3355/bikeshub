@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
         router.push("/auth");
       }
     } else if (user) {
-      if (user.userType === "seller" && pathname !== "/Seller" && !pathname.startsWith("/ads")) { //to solve redirection issues
+      if (user.userType === "seller" && pathname !== "/Seller" && !pathname.startsWith("/ads") && !pathname.startsWith("/stores")) { //to solve redirection issues
         router.push("/Seller");
       } else if (user.userType === "buyer" && pathname !== "/Buyer") {
         router.push("/Buyer");

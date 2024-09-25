@@ -15,7 +15,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
-import { FaCar, FaPhone, FaStore } from "react-icons/fa";
+import { FaCar, FaDashcube, FaPhone, FaStore } from "react-icons/fa";
 import { MdBusiness, MdPerson } from "react-icons/md";
 import { AuthContext } from "@/service/AuthProvider";
 
@@ -40,26 +40,42 @@ const Navbar = ({ userType }) => {
       boxShadow="sm"
     >
       <Flex alignItems="center">
-        {/* Logo / Brand Section */}
         <HStack spacing={8}>
           <Text
             fontWeight="bold"
             fontSize="2xl"
             color="teal.600"
             cursor="pointer"
-            onClick={() => handleNavigation("/")}
+            onClick={() => handleNavigation("/Seller")}
           >
             BikesHub
           </Text>
 
-          {/* Seller Links */}
           {userType === "seller" && (
             <HStack spacing={6}>
               <Flex
                 align="center"
                 direction="column"
                 cursor="pointer"
-                onClick={() => handleNavigation("/mystores")}
+                onClick={() => handleNavigation("/Seller")}
+              >
+                <IconButton
+                  icon={<FaDashcube size="24px" />}
+                  aria-label="My Stores"
+                  variant="ghost"
+                  colorScheme="teal"
+                  isRound
+                  size="lg"
+                />
+                <Text fontSize="sm" fontWeight="bold" color="gray.700">
+                  Seller
+                </Text>
+              </Flex>
+              <Flex
+                align="center"
+                direction="column"
+                cursor="pointer"
+                onClick={() => handleNavigation("/stores")}
               >
                 <IconButton
                   icon={<FaStore size="24px" />}
