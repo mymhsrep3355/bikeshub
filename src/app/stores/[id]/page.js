@@ -25,7 +25,9 @@ import Navbar from "@/components/Custom/Navbar";
 import ModalForm from "@/components/Custom/ModalForm";
 
 const StoreDetailsPage = () => {
-  const { storeById, fetchStoreDetails, addProductVehicle, userStores } = useContext(StoresContext);
+  const { storeById, fetchStoreDetails, addProductVehicle, userStores } =
+    useContext(StoresContext);
+  console.log(storeById);
   const router = useRouter();
   const toast = useToast();
   const pathname = usePathname();
@@ -51,7 +53,6 @@ const StoreDetailsPage = () => {
     setIsUserStore(userStores.some((store) => store._id === id));
   }, [userStores, id]);
 
-
   const sparePartFormFields = [
     {
       name: "images",
@@ -69,7 +70,6 @@ const StoreDetailsPage = () => {
       type: "textarea",
       isRequired: true,
     },
-    // { name: "storeId", label: "Store ID", type: "hidden", value: id },
     { name: "price", label: "Price", type: "number", isRequired: true },
   ];
   const vehicleFormFields = [
@@ -89,21 +89,24 @@ const StoreDetailsPage = () => {
       type: "textarea",
       isRequired: true,
     },
-    // { name: "storeId", label: "Store ID", type: "hidden", value: id },
+
     { name: "price", label: "Price", type: "number", isRequired: true },
     { name: "company", label: "Company", type: "text", isRequired: true },
     { name: "year", label: "Year", type: "number", isRequired: true },
     { name: "model", label: "Model", type: "text", isRequired: true },
   ];
 
-  const handleAddVehicle = async (data) => {
+  const handleAddVehicle = async (data, id) => {
     try {
+      console.log("Function triggered with data:", data); 
+      console.log("Modal Type:", modalType); 
+      console.log("Store ID:", id);
       if (modalType === "Add vehicle") {
         await addProductVehicle(data, id);
       } else if (modalType === "Add spare part") {
         await addSpareParts(data, id);
       }
-      
+
       toast({
         title: "Success",
         description: "Vehicle added successfully",
@@ -158,7 +161,6 @@ const StoreDetailsPage = () => {
         >
           Back to Stores
         </Button>
-
 
         <Box
           mb={12}
@@ -292,8 +294,12 @@ const StoreDetailsPage = () => {
         <ModalForm
           isOpen={isOpen}
           onClose={onClose}
-          formFields={modalType === "addVehicle" ? vehicleFormFields : sparePartFormFields}
-          formTitle={modalType === "addVehicle" ? "Add Vehicle" : "Add Spare Part"}
+          formFields={
+            modalType === "addVehicle" ? vehicleFormFields : sparePartFormFields
+          }
+          formTitle={
+            modalType === "addVehicle" ? "Add Vehicle" : "Add spare Part"
+          }
           onSubmit={handleAddVehicle}
         />
       </Container>

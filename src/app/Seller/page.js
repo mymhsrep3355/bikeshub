@@ -20,10 +20,10 @@ import {
   Link,
   IconButton,
   Spinner,
-  VStack,
   Grid,
   GridItem,
   Badge,
+  VStack,
   HStack,
 } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
@@ -258,8 +258,8 @@ const Seller = () => {
   return (
     <>
       <Navbar userType="seller" />
-      <Container maxW="9xl" w="full" py={6}>
-      
+      <Container maxW="8xl" py={6} px={{ base: 4, md: 8 }}>
+
         <Flex justify="space-between" align="center" mb={8}>
           <Box flex="1" mr={4}>
             <SearchBar placeholder="Search ads, stores, and more..." />
@@ -275,8 +275,6 @@ const Seller = () => {
             size="md"
           />
         </Flex>
-
-        {/* Featured Ads Section */}
         <Box mb={12} p={6} bg="white" borderRadius="lg" boxShadow="lg">
           <Flex justifyContent="space-between" alignItems="center" mb={4}>
             <Heading size="lg" color="teal.600">
@@ -291,7 +289,6 @@ const Seller = () => {
               View more →
             </Link>
           </Flex>
-
           <Box position="relative" overflow="hidden">
             {loading ? (
               <Flex justify="center" py={8}>
@@ -314,8 +311,6 @@ const Seller = () => {
             )}
           </Box>
         </Box>
-
-        {/* Featured Vehicles Section */}
         <Box mb={12} p={6} bg="white" borderRadius="lg" boxShadow="lg">
           <Flex justifyContent="space-between" alignItems="center" mb={4}>
             <Heading size="lg" color="teal.600">
@@ -330,7 +325,6 @@ const Seller = () => {
               View more →
             </Link>
           </Flex>
-
           <Box position="relative" overflow="hidden">
             {loading ? (
               <Flex justify="center" py={8}>
@@ -369,7 +363,6 @@ const Seller = () => {
               View more →
             </Link>
           </Flex>
-
           <Box position="relative" overflow="hidden">
             {loading ? (
               <Flex justify="center" py={8}>

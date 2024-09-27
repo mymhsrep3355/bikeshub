@@ -13,6 +13,24 @@ export const StoresProvider = ({ children }) => {
   const [stores, setStores] = useState([]);
   const [storeById, setStoreById] = useState(null);
   const [userStores, setUserStores] = useState([]);
+  const [storeParts, setStoreParts] = useState([]);
+
+  const fetchSpareParts = async (storeId) => {
+    try {
+      const response = await axios.get(
+        `${BASE_URL}/api/products/store/${storeId}/spare-parts`,
+      )
+      console.log(response.data);
+
+      setStoreParts(response.data);
+    
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  console.log(storeParts);
+  
 
   useEffect(() => {
     const fetchStoresUser = async () => {
@@ -63,8 +81,7 @@ export const StoresProvider = ({ children }) => {
       return null;
     }
   };
-
-
+  
   const addProductVehicle = async (data, id) => {
     try {
       const formData = new FormData();

@@ -26,16 +26,37 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (loading) return;
 
-    const protectedRoutes = ["/Seller", "/Buyer", "/Chats", "/Orders", "/profile", "/ads", "/stores"];
+    const protectedRoutes = [
+      "/Seller",
+      "/Buyer",
+      "/Chats",
+      "/Orders",
+      "/profile",
+      "/ads",
+      "/stores",
+    ];
 
     if (!token) {
       if (protectedRoutes.includes(pathname) || pathname === "/") {
         router.push("/auth");
       }
     } else if (user) {
-      if (user.userType === "seller" && pathname !== "/Seller" && !pathname.startsWith("/ads") && !pathname.startsWith("/stores")) { //to solve redirection issues
+      if (
+        user.userType === "seller" &&
+        pathname !== "/Seller" &&
+        !pathname.startsWith("/ads") &&
+        !pathname.startsWith("/stores") &&
+        !pathname.startsWith("/chatbox")
+      ) {
+        //to solve redirection issues
         router.push("/Seller");
-      } else if (user.userType === "buyer" && pathname !== "/Buyer") {
+      } else if (
+        user.userType === "buyer" &&
+        pathname !== "/Buyer" &&
+        !pathname.startsWith("/chatbox") &&
+        !pathname.startsWith("/ads") &&
+        !pathname.startsWith("/stores")
+      ) {
         router.push("/Buyer");
       }
     }
